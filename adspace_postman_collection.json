@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "1028524d-d56e-4082-b927-7f6d392b6b73",
+		"name": "adspace",
+		"description": "AdSpace service has two sub modules responsible for ensuring the auction process works  \nproperly, there is a Supply side service which lists all the ad spaces available and the  \nbase price for which it is being sold, there is the Demand side service which lists all the  \nbidders who are interested in bidding for these spaces.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28725277"
+	},
+	"item": [
+		{
+			"name": "ListAdSpaces",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ad_spaces",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ad_spaces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BiddersList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/list_bidders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"list_bidders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateNewBids",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"bidder_id\": 1,\n  \"ad_space_id\": 1,\n  \"amount\": 100.50,\n  \"bid_time\": \"2023-07-25 15:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/createnewbids",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"createnewbids"
+					]
+				},
+				"description": "This POST Call will create new bids on the adSpace and store it in the database."
+			},
+			"response": []
+		},
+		{
+			"name": "GetBidsonAdSpace",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ad_space_id\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/get_ad_space_bids",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"get_ad_space_bids"
+					]
+				},
+				"description": "This POST Call will give bids details on the adSpace fetching it from the database."
+			},
+			"response": []
+		}
+	]
+}
